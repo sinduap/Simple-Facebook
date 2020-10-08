@@ -1,4 +1,4 @@
-var user = [
+const user = [
   {
     name: "sindu",
     password: "test",
@@ -9,7 +9,7 @@ var user = [
   },
 ];
 
-var feed = [
+const feeds = [
   {
     name: "futi",
     comment: "hari yang melelahkan",
@@ -20,23 +20,65 @@ var feed = [
   },
 ];
 
-var namePrompt = prompt("Masukkan nama");
-var passPrompt = prompt("Masukkan password");
+/*
+const username = prompt("Masukkan nama");
+const password = prompt("Masukkan password");
+b
+const login = (username, password) => {
+  user.forEach((user) => {
+    if (
+      user.name === username.toLowerCase() &&
+      user.password === password.toLowerCase()
+    ) {
+      //Jalankan feed
+      displayFeeds();
+      return;
+    }
+  });
+  console.log("Username tidak terdaftar");
+};
+*/
+
+const login = (name, pass) => {
+  for (i = 0; i < user.length; i++) {
+    if (
+      user[i].name == name.toLowerCase() &&
+      user[i].password == pass.toLowerCase()
+    ) {
+      displayFeeds();
+      return;
+    }
+  }
+  console.log("Wrong password");
+};
+
+const displayFeeds = () =>
+  feeds.map((feed) =>
+    console.log(`Nama: ${feed.name}\nComment: ${feed.comment}`)
+  );
+
+login(prompt("Masukkan nama"), prompt("Masukkan password"));
+
+/*
+
+const namePrompt = prompt("Masukkan nama");
+const passPrompt = prompt("Masukkan password");
 
 function isUserValid(name, pass) {
-  let nameU = name.toLowerCase();
-  let passU = pass.toLowerCase();
   for (i = 0; i < user.length; i++) {
-    if (user[i].name == nameU && user[i].password == passU) {
-      runFeed();
+    if (
+      user[i].name == name.toLowerCase() &&
+      user[i].password == pass.toLowerCase()
+    ) {
+      runFeeds();
       return;
     }
   }
   alert("Wrong password");
 }
 
-function runFeed() {
-  feed.forEach(logFeeds);
+function runFeeds() {
+  feeds.forEach(logFeeds);
 }
 
 function logFeeds(feed) {
@@ -44,3 +86,5 @@ function logFeeds(feed) {
 }
 
 isUserValid(namePrompt, passPrompt);
+
+*/
